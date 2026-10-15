@@ -1,0 +1,13 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideHttpClient } from '@angular/common/http';
+import { of, throwError } from 'rxjs';
+import { SongsPage } from './songs.page';
+import { SongsService } from '../../services/songs/songs.service';
+import { Song } from '../../interfaces/songs.interface';
+const mockSongs: Song[] = [{ id: 1, title: 'Song', artist: 'Artist', genre: 'Rock', durationSeconds: 180, releasedYear: 2020 }];
+describe('SongsPage', () => { let fixture: ComponentFixture<SongsPage>; let component: SongsPage; let service: SongsService;
+ beforeEach(async () => { await TestBed.configureTestingModule({ imports: [SongsPage], providers: [provideHttpClient()] }).compileComponents(); fixture = TestBed.createComponent(SongsPage); component = fixture.componentInstance; service = TestBed.inject(SongsService); });
+ it('crea el componente', () => expect(component).toBeTruthy());
+ it('carga canciones exitosamente', () => { jest.spyOn(service, 'getAllSongs').mockReturnValue(of(mockSongs)); fixture.detectChanges(); expect(component.songs).toEqual(mockSongs); expect(component.state).toBe('success'); });
+ it('maneja errores', () => { jest.spyOn(service, 'getAllSongs').mockReturnValue(throwError(() => new Error('fail'))); fixture.detectChanges(); expect(component.state).toBe('error'); });
+});

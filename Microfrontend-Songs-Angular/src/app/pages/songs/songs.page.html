@@ -1,0 +1,1 @@
+@switch (state) { @case ('loading') { <div class="alert alert-info m-4">Cargando canciones...</div> } @case ('error') { <div class="alert alert-danger m-4">No fue posible cargar las canciones.</div> } @case ('success') { <app-songs-table [songs]="songs" /> } }
