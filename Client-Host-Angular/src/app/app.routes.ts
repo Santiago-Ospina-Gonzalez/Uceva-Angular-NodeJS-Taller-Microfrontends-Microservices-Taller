@@ -33,7 +33,17 @@ export const routes: Routes = [
                 remoteEntry: 'http://localhost:4201/remoteEntry.js',
                 exposedModule: './UsersPage',
         }).then(m => m.UsersPage),
-    },    
+    },
+    
+    {
+        path: 'songs',
+        loadComponent: () =>
+            loadRemoteModule({
+                type: 'module',
+                remoteEntry: 'http://localhost:4204/remoteEntry.js',
+                exposedModule: './SongsPage',
+            }).then(m => m.SongsPage),
+    },
   /**
    * Ruta de productos.
    *
