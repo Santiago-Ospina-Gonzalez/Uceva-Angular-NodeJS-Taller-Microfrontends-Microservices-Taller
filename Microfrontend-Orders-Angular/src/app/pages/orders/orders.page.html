@@ -1,0 +1,1 @@
+@switch (state) { @case ('loading') { <div class="alert alert-info m-4">Cargando órdenes...</div> } @case ('error') { <div class="alert alert-danger m-4">No fue posible cargar las órdenes.</div> } @case ('success') { <app-orders-table [orders]="orders" /> } }
