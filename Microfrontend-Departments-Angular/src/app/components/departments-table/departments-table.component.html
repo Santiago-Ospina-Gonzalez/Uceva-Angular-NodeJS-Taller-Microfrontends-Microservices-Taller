@@ -1,0 +1,30 @@
+<table class="table table-striped border">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Área</th>
+      <th scope="col">Estado</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (department of departments; track department) {
+      <tr>
+        <th scope="row">{{ department.id }}</th>
+        <td>{{ department.name }}</td>
+        <td>
+          <dsb-badge-atom
+            [text]="department.area"
+            [type]="areaBadge(department.area)">
+          </dsb-badge-atom>
+        </td>
+        <td>
+          <dsb-badge-atom
+            [text]="department.status"
+            [type]="statusMap[department.status]">
+          </dsb-badge-atom>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
