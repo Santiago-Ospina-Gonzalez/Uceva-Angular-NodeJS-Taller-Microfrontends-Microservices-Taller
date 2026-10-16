@@ -78,5 +78,14 @@ export const routes: Routes = [
    * Captura cualquier ruta no definida y redirige
    * automáticamente a la ruta de usuarios.
    */
+  {
+    path: 'departments',
+    loadComponent: () =>
+      loadRemoteModule({
+        type: 'module',
+        remoteEntry: 'http://localhost:4205/remoteEntry.js',
+        exposedModule: './DepartmentsPage',
+      }).then((m) => m.DepartmentsPage),
+  },
   { path: '**', redirectTo: 'users' },
 ];

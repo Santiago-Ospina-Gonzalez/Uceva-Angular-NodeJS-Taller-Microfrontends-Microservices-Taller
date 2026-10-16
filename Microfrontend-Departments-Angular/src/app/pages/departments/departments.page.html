@@ -1,0 +1,15 @@
+<main class="container-fluid px-0">
+  <h1 class="h3 mb-4">Departamentos</h1>
+
+  @switch (state) {
+    @case ('loading') {
+      <app-alert alertState="loading" text="Cargando departamentos..." />
+    }
+    @case ('error') {
+      <app-alert alertState="error" text="Error al cargar los departamentos" />
+    }
+    @case ('success') {
+      <app-departments-table [departments]="departments" />
+    }
+  }
+</main>
