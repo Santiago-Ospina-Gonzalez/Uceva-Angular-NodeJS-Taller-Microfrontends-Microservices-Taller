@@ -1,0 +1,10 @@
+module.exports = {
+  preset: 'jest-preset-angular',
+  setupFilesAfterEnv: ['<rootDir>/setup-jest.ts'],
+  testEnvironment: 'jsdom',
+  collectCoverage: true,
+  coverageReporters: ['text', 'html', 'lcov'],
+  coverageThreshold: { global: { lines: 90, statements: 90, functions: 90, branches: 80 } },
+  testMatch: ['**/*.spec.ts'],
+  testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/dist/'],
+};
